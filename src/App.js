@@ -3,18 +3,18 @@ import Home from './pages/Home'
 import Nav from './components/Nav'
 import JobOffer from './pages/JobOffer'
 import ScrollToTop from './components/ScrollToTop'
-
-
+import Search from './pages/Search'
 
 const App = () => {
 	return (
 		<div className='App'>
 			<BrowserRouter>
-			<ScrollToTop />
+				<ScrollToTop />
 				<Nav />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/joboffer/:id' element={<JobOffer />} />
+					<Route path='/search/:keyword/:location/:fulltime' element={<Search />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

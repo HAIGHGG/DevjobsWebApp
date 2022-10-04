@@ -41,7 +41,7 @@ input:placeholder-shown {
 	border-radius: 6px;
 }
 
-.search-bar button {
+.search-bar button, .filter {
 	width: 48px;
 	height: 48px;
 	border-radius: 5px;
@@ -50,6 +50,7 @@ input:placeholder-shown {
 	font-size: 22px;
 	transition: background-color 0.2s;
 	padding: 13px;
+	cursor: pointer;
 }
 
 .search-bar button:nth-of-type(2) {
@@ -87,10 +88,13 @@ a {
 		background-image: url('../assets/desktop/bg-pattern-header.svg');
 		background-size: cover;
 	}
+	.wrapper{
+		padding: 30px 50px 0 50px;
+	}
 	.search-bar {
 		width: 689px;
 	}
-	.search-bar button:nth-of-type(1) {
+	.filter {
 		display: none;
 	}
 	.search-bar input:nth-of-type(1),
@@ -148,6 +152,9 @@ a {
 @media (min-width: 1440px) {
 	nav {
 		background-position: bottom;
+	}
+	.wrapper{
+		padding: 30px 200px 0 200px;
 	}
 	.search-bar {
 		width: 1110px;

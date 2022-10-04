@@ -6,5 +6,5 @@ This is a solution to the [Devjobs web app](https://www.frontendmentor.io/challe
 
 ### ToDo
 
-- Search functionality
 - Media querries for joboffer page for tablets and desktops
+- Modal for filter on mobile

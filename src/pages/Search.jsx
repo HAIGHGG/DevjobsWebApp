@@ -1,19 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import data from '../data.json'
+function Search() {
+	let params = useParams()
+	let location = ''
+	let keyword = ''
+	let contract = ''
+	params.location !== 'all' ? (location = params.location) : (location = '')
+	params.keyword !== 'all' ? (keyword = params.keyword) : (keyword = '')
+	params.fulltime !== 'all' ? (contract = 'Full Time') : (contract = '')
 
-function JobsList() {
-	console.log(data)
+	const filtered = data.filter(job => {
+		return (
+			job.position.toLowerCase().includes(keyword.toLowerCase()) &&
+			job.location.toLowerCase().includes(location.toLowerCase()) &&
+			job.contract.toLowerCase().includes(contract.toLowerCase())
+		)
+	})
 
 	return (
 		<Grid>
-			{data.map(job => {
+			{filtered.map(job => {
 				return (
 					<Link to={'joboffer/' + job.id}>
 						<Card key={job.id}>
 							<LogoDiv style={{ backgroundColor: job.logoBackground }}>
-								<img src={job.logo}></img>
+								<img src={'../../.' + job.logo}></img>
 							</LogoDiv>
 							<p>
 								{job.postedAt} <span> . </span> {job.contract}
@@ -97,4 +111,4 @@ const Card = styled.div`
 	}
 `
 
-export default JobsList
+export default Search
