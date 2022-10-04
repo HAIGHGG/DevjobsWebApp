@@ -102,7 +102,7 @@ const Wrapper = styled.div`
 	}
 	section:nth-of-type(1) {
 		position: absolute;
-		top: -115px;
+		top: -135px;
 		left: 0;
 		height: 205px;
 		width: 100%;

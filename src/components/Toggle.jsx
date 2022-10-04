@@ -49,7 +49,7 @@ const Input = styled.input`
 	top: -9999px;
 
 	&:checked + span {
-		background-color: #19202D;
+
 
 		&:before {
 			left: calc(100% - 5px);

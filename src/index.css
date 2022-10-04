@@ -11,6 +11,8 @@
 	--text-header: #19202D;
 	--second-color: #5964E0;
   --third-color:#F4F6F8;
+  --filter-color: #6E8098;
+  --details-color: #F4F6F8;
 }
 
 :root[theme='dark']{
@@ -20,6 +22,12 @@
 	--text-header: #FFFFFF;
 	--second-color: #5964E0;
   --third-color:#20273F;
+  --filter-color: #FFFFFF;
+  --details-color:#303547;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,10 +40,11 @@ body {
   transition: background-color 0.2s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 16px;
 }
+
 
 a{
   text-decoration: none;
