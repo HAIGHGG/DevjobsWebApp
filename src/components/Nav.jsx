@@ -1,18 +1,24 @@
 import './Nav.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import Toggle from './Toggle'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { HiFilter } from 'react-icons/hi'
 import { RiMapPin2Fill } from 'react-icons/ri'
+import { Location } from 'react-router-dom'
+import Modal from './Modal'
 
 function Nav() {
+	let showBar = true
+	const navigate = useNavigate()
 	const [name, setName] = useState('')
 	const [location, setLocation] = useState('')
 	const [isFulltime, SetIsFulltime] = useState(false)
 	const [Theme, SetTheme] = useState([])
-	const navigate = useNavigate()
+	const [showModal, SetShowModal] = useState(false)
+
+	window.location.href.includes('/joboffer/') ? (showBar = false) : (showBar = true)
 
 	const handleLightMode = () => {
 		SetTheme('')
@@ -50,45 +56,47 @@ function Nav() {
 	return (
 		<nav>
 			<div className='wrapper'>
-
-					<h1>devjobs</h1>
+				<h1>devjobs</h1>
 
 				<div className='wrapper-for-toggle'>
 					<BsFillSunFill />
 					<Toggle onChange={Theme === 'dark' ? handleLightMode : handleDarkMode} />
 					<BsMoonFill />
 				</div>
-			</div>
-			<form onSubmit={submitHandler} className='search-bar'>
-				<label htmlFor='name'>
-					<BiSearch />
-				</label>
-				<input
-					id='name'
-					onChange={e => setName(e.target.value)}
-					type='text'
-					value={name}
-					placeholder='Filter by title, companie, expertise...'
-				/>
-				<label htmlFor='location'>
-					<RiMapPin2Fill />
-				</label>
-				<input
-					id='location'
-					onChange={e => setLocation(e.target.value)}
-					type='text'
-					value={location}
-					placeholder='Filter by location...'
-				/>
-				<input id='contract' type='checkbox' onClick={handleFulltime} />
-				<label htmlFor='contract'>Full Time</label>
-				<div className='filter'>
-					<HiFilter />
-				</div>
-				<button>
-					<BiSearch />
-				</button>
-			</form>
+			</div>{' '}
+			{showBar && (
+				<form onSubmit={submitHandler} className='search-bar'>
+					<label htmlFor='name'>
+						<BiSearch />
+					</label>
+					<input
+						id='name'
+						onChange={e => setName(e.target.value)}
+						type='text'
+						value={name}
+						placeholder='Filter by title, companie, expertise...'
+					/>
+					<label htmlFor='location'>
+						<RiMapPin2Fill />
+					</label>
+					<input
+						id='location'
+						onChange={e => setLocation(e.target.value)}
+						type='text'
+						value={location}
+						placeholder='Filter by location...'
+					/>
+					<input id='contract' type='checkbox' onClick={handleFulltime} />
+					<label htmlFor='contract'>Full Time</label>
+					<div className='filter' onClick={() => SetShowModal(true)}>
+						<HiFilter />
+					</div>
+					<button>
+						<BiSearch />
+					</button>
+				</form>
+			)}
+			<Modal onClose={() => SetShowModal(false)} show={showModal} />
 		</nav>
 	)
 }

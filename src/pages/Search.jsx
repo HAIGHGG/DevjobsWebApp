@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import data from '../data.json'
+import Nav from '../components/Nav'
 function Search() {
 	let params = useParams()
 	let location = ''
@@ -24,8 +25,8 @@ function Search() {
 		<Grid>
 			{filtered.map(job => {
 				return (
-					<Link to={'joboffer/' + job.id}>
-						<Card key={job.id}>
+					<Link key={job.id} to={'/joboffer/' + job.id}>
+						<Card>
 							<LogoDiv style={{ backgroundColor: job.logoBackground }}>
 								<img src={'../../.' + job.logo}></img>
 							</LogoDiv>

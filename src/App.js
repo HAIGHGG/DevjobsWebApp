@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import JobOffer from './pages/JobOffer'
 import ScrollToTop from './components/ScrollToTop'
 import Search from './pages/Search'
+import { useState } from 'react'
 
 const App = () => {
 	return (
@@ -13,7 +14,7 @@ const App = () => {
 				<Nav />
 				<Routes>
 					<Route path='/' element={<Home />} />
-					<Route path='/joboffer/:id' element={<JobOffer />} />
+					<Route path='/joboffer/:id' element={<JobOffer  />} />
 					<Route path='/search/:keyword/:location/:fulltime' element={<Search />} />
 				</Routes>
 			</BrowserRouter>

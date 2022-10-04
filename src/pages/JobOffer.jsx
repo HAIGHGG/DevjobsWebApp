@@ -5,7 +5,7 @@ import styled from 'styled-components'
 function JobOffer() {
 	let params = useParams()
 	const details = data[params.id - 1]
-	console.log(details)
+	
 
 	return (
 		<div>
@@ -14,8 +14,10 @@ function JobOffer() {
 					<LogoDiv style={{ backgroundColor: details.logoBackground }}>
 						<img src={'.' + details.logo}></img>
 					</LogoDiv>
-					<h2>{details.company}</h2>
-					<p>{details.website}</p>
+					<div>
+						<h2>{details.company}</h2>
+						<p>{details.website}</p>
+					</div>
 					<button>Company Site</button>
 				</section>
 				<section>
@@ -54,7 +56,7 @@ function JobOffer() {
 
 const LogoDiv = styled.div`
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: flex;
@@ -63,6 +65,17 @@ const LogoDiv = styled.div`
 	width: 50px;
 	height: 50px;
 	border-radius: 15px;
+	@media (min-width: 768px) {
+		position: static;
+		transform: none;
+		height: 140px;
+		width: 140px;
+		border-radius: 6px;
+
+		img {
+			width: 81px;
+		}
+	}
 `
 
 const ApplyNowDiv = styled.div`
@@ -90,6 +103,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	margin: 0 25px 0 25px;
 
 	section {
@@ -98,11 +112,12 @@ const Wrapper = styled.div`
 		justify-content: center;
 		background-color: var(--element);
 		border-radius: 6px;
+		max-width: 730px;
 		transition: background-color 0.2s;
 	}
 	section:nth-of-type(1) {
 		position: absolute;
-		top: -135px;
+		top: -145px;
 		left: 0;
 		height: 205px;
 		width: 100%;
@@ -124,6 +139,29 @@ const Wrapper = styled.div`
 			color: var(--second-color);
 			background-color: var(--third-color);
 			transition: background-color 0.2s;
+		}
+		@media (min-width: 768px) {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			height: 140px;
+			left: 50%;
+			padding-right: 40px;
+			transform: translate(-50%, 0);
+
+			p,
+			h2 {
+				margin: 0;
+			}
+
+			button {
+				margin-left: auto;
+			}
+
+			div:nth-of-type(2) {
+				margin-left: 25px;
+			}
 		}
 	}
 	section:nth-of-type(2) {
@@ -155,7 +193,7 @@ const Wrapper = styled.div`
 			font-weight: bold;
 			font-size: 16px;
 			background-color: var(--second-color);
-			
+
 			color: #ffffff;
 		}
 
