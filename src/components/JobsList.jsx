@@ -11,7 +11,7 @@ function JobsList() {
 					<Link key={job.id} to={'joboffer/' + job.id}>
 						<Card>
 							<LogoDiv style={{ backgroundColor: job.logoBackground }}>
-								<img src={job.logo}></img>
+								<img src={job.logo} alt={job.company + 'logo'}></img>
 							</LogoDiv>
 							<p>
 								{job.postedAt} <span> . </span> {job.contract}

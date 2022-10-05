@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import data from '../data.json'
-import Nav from '../components/Nav'
+
 function Search() {
 	let params = useParams()
 	let location = ''
@@ -28,7 +28,7 @@ function Search() {
 					<Link key={job.id} to={'/joboffer/' + job.id}>
 						<Card>
 							<LogoDiv style={{ backgroundColor: job.logoBackground }}>
-								<img src={'../../.' + job.logo}></img>
+								<img src={'../../.' + job.logo} alt={job.company + 'logo'}></img>
 							</LogoDiv>
 							<p>
 								{job.postedAt} <span> . </span> {job.contract}

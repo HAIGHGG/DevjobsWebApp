@@ -12,7 +12,7 @@ function JobOffer() {
 			<Wrapper>
 				<section>
 					<LogoDiv style={{ backgroundColor: details.logoBackground }}>
-						<img src={'.' + details.logo}></img>
+						<img src={'.' + details.logo} alt={details.company + 'logo'}></img>
 					</LogoDiv>
 					<div>
 						<h2>{details.company}</h2>

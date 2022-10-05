@@ -34,9 +34,6 @@ function Nav() {
 		isFulltime ? SetIsFulltime(false) : SetIsFulltime(true)
 	}
 
-	const handleShowModal = () => {
-		showModal ? SetShowModal(false) : SetShowModal(true)
-	}
 
 	const submitHandler = e => {
 		SetShowModal(false)
@@ -56,8 +53,8 @@ function Nav() {
 					: navigate('/search/' + name + '/' + location + '/all')
 			}
 		}
+		setName('')
 		setLocation('')
-		SetIsFulltime(false)
 	}
 
 	return (
@@ -120,12 +117,13 @@ function Nav() {
 										id='modalLocation'
 										onChange={e => setLocation(e.target.value)}
 										type='text'
+										
 										value={location}
 										placeholder='Filter by location...'
 									/>
 								</div>
 								<div className='modal-div'>
-									<input className='modal-input-contract' onClick={handleFulltime} id='modalContract' type='checkbox' />
+									<input className='modal-input-contract' onClick={handleFulltime} id='modalContract' type='checkbox' checked={isFulltime} />
 									<label htmlFor='modalContract'>Full Time Only</label>
 								</div>
 								<button>Search</button>
