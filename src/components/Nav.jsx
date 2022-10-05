@@ -14,31 +14,31 @@ function Nav() {
 	const navigate = useNavigate()
 	const [name, setName] = useState('')
 	const [location, setLocation] = useState('')
-	const [isFulltime, SetIsFulltime] = useState(false)
-	const [Theme, SetTheme] = useState([])
-	const [showModal, SetShowModal] = useState(false)
+	const [isFulltime, setIsFulltime] = useState(false)
+	const [theme, setTheme] = useState([])
+	const [showModal, setShowModal] = useState(false)
 
 	//if its joboffer page searchbar will not appear
 	window.location.href.includes('/joboffer/') ? (showBar = false) : (showBar = true)
 
 	//functions for toggle theme
 	const handleLightMode = () => {
-		SetTheme('')
+		setTheme('')
 		document.documentElement.setAttribute('theme', '')
 	}
 
 	const handleDarkMode = () => {
-		SetTheme('dark')
+		setTheme('dark')
 		document.documentElement.setAttribute('theme', 'dark')
 	}
 	//if checkbox 'full time only' pressed change isFullTime boolean
 	const handleFulltime = () => {
-		isFulltime ? SetIsFulltime(false) : SetIsFulltime(true)
+		isFulltime ? setIsFulltime(false) : setIsFulltime(true)
 	}
 
 	// checking is any input is empty,if one of them is empty then change param to 'all' ,if all are empty navigate to home
 	const submitHandler = e => {
-		SetShowModal(false)
+		setShowModal(false)
 		e.preventDefault()
 		if (location.length === 0) {
 			if (name.length === 0) {
@@ -66,7 +66,7 @@ function Nav() {
 
 				<div className='wrapper-for-toggle'>
 					<BsFillSunFill />
-					<Toggle onChange={Theme === 'dark' ? handleLightMode : handleDarkMode} />
+					<Toggle onChange={theme === 'dark' ? handleLightMode : handleDarkMode} />
 					<BsMoonFill />
 				</div>
 			</div>{' '}
@@ -98,7 +98,7 @@ function Nav() {
 					<label className='nav-label' htmlFor='contract'>
 						Full Time <span className='nav-label-only'>Only</span>
 					</label>
-					<div className='filter' onClick={() => SetShowModal(true)}>
+					<div className='filter' onClick={() => setShowModal(true)}>
 						<HiFilter />
 					</div>
 					<button className='nav-button--mobile'>
@@ -106,7 +106,7 @@ function Nav() {
 					</button>
 					<button className='nav-button--desktop'>Search</button>
 					{showModal && (
-						<Backdrop onClick={() => SetShowModal(false)}>
+						<Backdrop onClick={() => setShowModal(false)}>
 							<Wrapper onClick={e => e.stopPropagation()}>
 								<div className='modal-div'>
 									<label htmlFor='modalLocation' className='map-pin'>
