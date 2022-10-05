@@ -1,13 +1,13 @@
 import './Nav.css'
-import { useEffect, useState } from 'react'
-import { useNavigate, Link, useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate} from 'react-router-dom'
 import Toggle from './Toggle'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { HiFilter } from 'react-icons/hi'
 import { RiMapPin2Fill } from 'react-icons/ri'
-import { Location } from 'react-router-dom'
-import Modal from './Modal'
+
+import styled from 'styled-components'
 
 function Nav() {
 	let showBar = true
@@ -34,7 +34,12 @@ function Nav() {
 		isFulltime ? SetIsFulltime(false) : SetIsFulltime(true)
 	}
 
+	const handleShowModal = () => {
+		showModal ? SetShowModal(false) : SetShowModal(true)
+	}
+
 	const submitHandler = e => {
+		SetShowModal(false)
 		e.preventDefault()
 		if (location.length === 0) {
 			if (name.length === 0) {
@@ -51,6 +56,8 @@ function Nav() {
 					: navigate('/search/' + name + '/' + location + '/all')
 			}
 		}
+		setLocation('')
+		SetIsFulltime(false)
 	}
 
 	return (
@@ -66,39 +73,133 @@ function Nav() {
 			</div>{' '}
 			{showBar && (
 				<form onSubmit={submitHandler} className='search-bar'>
-					<label htmlFor='name'>
+					<label className='nav-label' htmlFor='name'>
 						<BiSearch />
 					</label>
 					<input
+						className='nav-input input-name'
 						id='name'
 						onChange={e => setName(e.target.value)}
 						type='text'
 						value={name}
 						placeholder='Filter by title, companie, expertise...'
 					/>
-					<label htmlFor='location'>
+					<label className='nav-label' htmlFor='location'>
 						<RiMapPin2Fill />
 					</label>
 					<input
+						className='nav-input input-location'
 						id='location'
 						onChange={e => setLocation(e.target.value)}
 						type='text'
 						value={location}
 						placeholder='Filter by location...'
 					/>
-					<input id='contract' type='checkbox' onClick={handleFulltime} />
-					<label htmlFor='contract'>Full Time</label>
+					<input className='nav-input input-contract' id='contract' type='checkbox' onClick={handleFulltime} />
+					<label className='nav-label' htmlFor='contract'>
+						Full Time
+					</label>
 					<div className='filter' onClick={() => SetShowModal(true)}>
 						<HiFilter />
 					</div>
-					<button>
+					<button className='nav-button'>
 						<BiSearch />
 					</button>
+					{showModal && (
+						<Backdrop onClick={() => SetShowModal(false)}>
+							<Wrapper onClick={e => e.stopPropagation()}>
+								<div className='modal-div'>
+									<label htmlFor='modalLocation' className='map-pin'>
+										<RiMapPin2Fill />
+									</label>
+									<input
+										className='modal-input-name'
+										id='modalLocation'
+										onChange={e => setLocation(e.target.value)}
+										type='text'
+										value={location}
+										placeholder='Filter by location...'
+									/>
+								</div>
+								<div className='modal-div'>
+									<input className='modal-input-contract' onClick={handleFulltime} id='modalContract' type='checkbox' />
+									<label htmlFor='modalContract'>Full Time Only</label>
+								</div>
+								<button>Search</button>
+							</Wrapper>
+						</Backdrop>
+					)}
 				</form>
 			)}
-			<Modal onClose={() => SetShowModal(false)} show={showModal} />
 		</nav>
 	)
 }
+
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 327px;
+	height: 217px;
+	padding: 25px;
+	background-color: var(--element);
+	border-radius: 6px;
+
+	.modal-div{
+		display: flex;
+		align-items: center;
+	}
+
+	button {
+		height: 48px;
+		border-radius: 5px;
+		font-weight: bold;
+		font-size: 16px;
+		background-color: var(--second-color);
+		width: 100%;
+		height: 48px;
+		color: #ffffff;
+	}
+
+	label {
+		margin-right: 10px;
+		font-size: 16px;
+		font-weight: bold;
+		color: var(--text-header);
+	}
+	.map-pin {
+		font-size: 26px;
+		color: var(--second-color);
+	}
+	.modal-input-name {
+		width: 195px;
+		height: 48px;
+		padding-left: 10px;
+		border-radius: 5px;
+		border: none;
+		background-color: var(--element);
+		color: var(--text-header);
+	}
+	.modal-input-contract {
+		width: 24px;
+		height: 24px;
+		margin-right: 20px;
+		accent-color: var(--second-color);
+
+	}
+`
+const Backdrop = styled.div`
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+`
 
 export default Nav

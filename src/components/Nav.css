@@ -41,7 +41,7 @@ input:placeholder-shown {
 	border-radius: 6px;
 }
 
-.search-bar button, .filter {
+.nav-button, .filter {
 	width: 48px;
 	height: 48px;
 	border-radius: 5px;
@@ -58,7 +58,7 @@ input:placeholder-shown {
 	background-color: var(--second-color);
 }
 
-.search-bar input {
+.nav-input {
 	width: 195px;
 	height: 48px;
 	border-radius: 5px;
@@ -69,9 +69,9 @@ input:placeholder-shown {
 	padding-left: 10px;
 }
 
-.search-bar input:nth-of-type(2),
-.search-bar input:nth-of-type(3),
-.search-bar label {
+.input-location,
+.input-contract,
+.nav-label {
 	display: none;
 }
 
@@ -97,18 +97,18 @@ a {
 	.filter {
 		display: none;
 	}
-	.search-bar input:nth-of-type(1),
-	.search-bar input:nth-of-type(2) {
+	.input-name,
+	.input-location {
 
 		width: 165px;
 	}
 
-	.search-bar input:nth-of-type(2),
-	.search-bar input:nth-of-type(3),
+	.input-location,
+	.input-contract,
 	.search-bar label {
 		display: block;
 	}
-	.search-bar input:nth-of-type(3) {
+	.input-contract {
 		width: 24px;
 		height: 24px;
 		accent-color: var(--second-color);

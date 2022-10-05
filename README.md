@@ -6,4 +6,4 @@ This is a solution to the [Devjobs web app](https://www.frontendmentor.io/challe
 
 ### ToDo
 
-- Functionality for modal for filter on mobile
+- Optimalization
