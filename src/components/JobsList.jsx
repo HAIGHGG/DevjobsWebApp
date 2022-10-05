@@ -48,8 +48,6 @@ const Grid = styled.div`
 	margin-bottom: 50px;
 
 	button {
-		grid-column-start: 2;
-		grid-column-end: 2;
 		width: 141px;
 		height: 48px;
 		border-radius: 5px;
@@ -63,12 +61,22 @@ const Grid = styled.div`
 		grid-column-gap: 10px;
 		padding: 0 40px;
 		row-gap: 65px;
+
+		button {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
 	}
 
 	@media (min-width: 1440px) {
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-column-gap: 30px;
 		padding: 0 165px;
+
+		button {
+			grid-column-start: 2;
+			grid-column-end: 2;
+		}
 	}
 `
 
