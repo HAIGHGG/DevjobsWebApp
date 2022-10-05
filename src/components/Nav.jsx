@@ -1,6 +1,6 @@
 import './Nav.css'
 import { useState } from 'react'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Toggle from './Toggle'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
@@ -18,8 +18,10 @@ function Nav() {
 	const [Theme, SetTheme] = useState([])
 	const [showModal, SetShowModal] = useState(false)
 
+	//if its joboffer page searchbar will not appear
 	window.location.href.includes('/joboffer/') ? (showBar = false) : (showBar = true)
 
+	//functions for toggle theme
 	const handleLightMode = () => {
 		SetTheme('')
 		document.documentElement.setAttribute('theme', '')
@@ -29,12 +31,12 @@ function Nav() {
 		SetTheme('dark')
 		document.documentElement.setAttribute('theme', 'dark')
 	}
-
+	//if checkbox 'full time only' pressed change isFullTime boolean
 	const handleFulltime = () => {
 		isFulltime ? SetIsFulltime(false) : SetIsFulltime(true)
 	}
 
-
+	// checking is any input is empty,if one of them is empty then change param to 'all' ,if all are empty navigate to home
 	const submitHandler = e => {
 		SetShowModal(false)
 		e.preventDefault()
@@ -102,9 +104,7 @@ function Nav() {
 					<button className='nav-button--mobile'>
 						<BiSearch />
 					</button>
-					<button className='nav-button--desktop'>
-						Search
-					</button>
+					<button className='nav-button--desktop'>Search</button>
 					{showModal && (
 						<Backdrop onClick={() => SetShowModal(false)}>
 							<Wrapper onClick={e => e.stopPropagation()}>
@@ -117,13 +117,18 @@ function Nav() {
 										id='modalLocation'
 										onChange={e => setLocation(e.target.value)}
 										type='text'
-										
 										value={location}
 										placeholder='Filter by location...'
 									/>
 								</div>
 								<div className='modal-div'>
-									<input className='modal-input-contract' onClick={handleFulltime} id='modalContract' type='checkbox' checked={isFulltime} />
+									<input
+										className='modal-input-contract'
+										onClick={handleFulltime}
+										id='modalContract'
+										type='checkbox'
+										checked={isFulltime}
+									/>
 									<label htmlFor='modalContract'>Full Time Only</label>
 								</div>
 								<button>Search</button>
@@ -136,6 +141,8 @@ function Nav() {
 	)
 }
 
+//styles only for modal
+
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -147,7 +154,7 @@ const Wrapper = styled.div`
 	background-color: var(--element);
 	border-radius: 6px;
 
-	.modal-div{
+	.modal-div {
 		display: flex;
 		align-items: center;
 	}
@@ -187,7 +194,6 @@ const Wrapper = styled.div`
 		height: 24px;
 		margin-right: 20px;
 		accent-color: var(--second-color);
-
 	}
 `
 const Backdrop = styled.div`

@@ -9,10 +9,13 @@ function Search() {
 	let location = ''
 	let keyword = ''
 	let contract = ''
+
+	//checking is param value different than 'all' if true set variable to this param if its not let it empty string
 	params.location !== 'all' ? (location = params.location) : (location = '')
 	params.keyword !== 'all' ? (keyword = params.keyword) : (keyword = '')
 	params.fulltime !== 'all' ? (contract = 'Full Time') : (contract = '')
 
+	//filtering data.json
 	const filtered = data.filter(job => {
 		return (
 			job.position.toLowerCase().includes(keyword.toLowerCase()) &&
