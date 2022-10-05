@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import data from '../data.json'
 
 function JobsList() {
-
 	return (
 		<Grid>
 			{data.map(job => {
@@ -24,6 +23,7 @@ function JobsList() {
 					</Link>
 				)
 			})}
+			<button>Load More</button>
 		</Grid>
 	)
 }
@@ -46,6 +46,18 @@ const Grid = styled.div`
 	row-gap: 50px;
 	justify-items: center;
 	margin-bottom: 50px;
+
+	button {
+		grid-column-start: 2;
+		grid-column-end: 2;
+		width: 141px;
+		height: 48px;
+		border-radius: 5px;
+		font-size: 16px;
+		background-color: var(--second-color);
+		color: #ffffff;
+	}
+
 	@media (min-width: 768px) {
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 10px;
@@ -93,6 +105,12 @@ const Card = styled.div`
 		font-size: 14px;
 		font-weight: bold;
 		color: var(--second-color);
+	}
+	@media (min-width: 768px) {
+		width: 339px;
+	}
+	@media (min-width: 1440px) {
+		width: 350px;
 	}
 `
 

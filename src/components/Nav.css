@@ -11,7 +11,7 @@ nav {
 }
 input:placeholder-shown {
 	text-overflow: ellipsis;
-  }
+}
 
 .wrapper {
 	display: flex;
@@ -40,8 +40,12 @@ input:placeholder-shown {
 	transition: background-color 0.2s;
 	border-radius: 6px;
 }
+.nav-button--desktop {
+	display: none;
+}
 
-.nav-button, .filter {
+.nav-button--mobile,
+.filter {
 	width: 48px;
 	height: 48px;
 	border-radius: 5px;
@@ -68,7 +72,7 @@ input:placeholder-shown {
 	transition: background-color 0.2s;
 	padding-left: 10px;
 }
-
+.nav-label-only,
 .input-location,
 .input-contract,
 .nav-label {
@@ -88,7 +92,7 @@ a {
 		background-image: url('../assets/desktop/bg-pattern-header.svg');
 		background-size: cover;
 	}
-	.wrapper{
+	.wrapper {
 		padding: 30px 50px 0 50px;
 	}
 	.search-bar {
@@ -97,9 +101,18 @@ a {
 	.filter {
 		display: none;
 	}
+	.nav-button--mobile {
+		display: none;
+	}
+	.nav-button--desktop {
+		display: block;
+		width: 80px;
+		height: 48px;
+		border-radius: 5px;
+		font-size: 16px;
+	}
 	.input-name,
 	.input-location {
-
 		width: 165px;
 	}
 
@@ -127,57 +140,57 @@ a {
 		color: var(--text-header);
 	}
 
-	.search-bar::after{
+	.search-bar::after {
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 235px;
+		left: 225px;
 		width: 2px;
 		height: 100%;
 		background-color: var(--details-color);
 		transition: background-color 0.2s;
 	}
-	.search-bar::before{
+	.search-bar::before {
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 475px;
+		left: 445px;
 		width: 2px;
 		height: 100%;
 		background-color: var(--details-color);
 		transition: background-color 0.2s;
 	}
-
 }
 @media (min-width: 1440px) {
 	nav {
 		background-position: bottom;
 	}
-	.wrapper{
-		padding: 30px 200px 0 200px;
+	.wrapper {
+		padding: 30px 170px 0 170px;
 	}
 	.search-bar {
 		width: 1110px;
 	}
-	.search-bar input:nth-of-type(1){
+	.search-bar input:nth-of-type(1) {
 		width: 280px;
-		margin-right: 150px;
+		margin-right: 140px;
 	}
-	.search-bar input:nth-of-type(2){
-		margin-right: 150px;
+	.search-bar input:nth-of-type(2) {
+		margin-right: 100px;
 	}
-	.search-bar label:nth-of-type(3){
-		margin-right: 50px;
+	.search-bar label:nth-of-type(3) {
+		margin-right: 25px;
 	}
-
-	.search-bar::after{
-
-		left: 450px;
-
+	.nav-button--desktop {
+		width: 123px;
 	}
-	.search-bar::before{
-
-		left: 775px;
-
+	.nav-label-only{
+		display: inline;
+	}
+	.search-bar::after {
+		left: 465px;
+	}
+	.search-bar::before {
+		left: 755px;
 	}
 }

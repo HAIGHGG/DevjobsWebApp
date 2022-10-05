@@ -97,13 +97,16 @@ function Nav() {
 					/>
 					<input className='nav-input input-contract' id='contract' type='checkbox' onClick={handleFulltime} />
 					<label className='nav-label' htmlFor='contract'>
-						Full Time
+						Full Time <span className='nav-label-only'>Only</span>
 					</label>
 					<div className='filter' onClick={() => SetShowModal(true)}>
 						<HiFilter />
 					</div>
-					<button className='nav-button'>
+					<button className='nav-button--mobile'>
 						<BiSearch />
+					</button>
+					<button className='nav-button--desktop'>
+						Search
 					</button>
 					{showModal && (
 						<Backdrop onClick={() => SetShowModal(false)}>
