@@ -78,16 +78,29 @@ const Grid = styled.div`
 			grid-column-end: 2;
 		}
 	}
+	@media (min-width: 2070px) {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		button {
+			grid-column-start: 2;
+			grid-column-end: 4;
+		}
+	}
 `
 
 const Card = styled.div`
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	width: 327px;
 	height: 228px;
 	padding: 45px 30px 35px 30px;
 	border-radius: 6px;
 	background-color: var(--element);
-	transition: background-color 0.2s;
+	transition: background-color 0.2s, transform 0.2s;
+
+	:hover{
+		transform: scale(1.1);
+	}
 
 	h3 {
 		font-size: 20px;
@@ -109,7 +122,7 @@ const Card = styled.div`
 		margin-bottom: 15px;
 	}
 	p:nth-of-type(3) {
-		margin-top: 40px;
+		margin-top: auto;
 		font-size: 14px;
 		font-weight: bold;
 		color: var(--second-color);
@@ -119,6 +132,21 @@ const Card = styled.div`
 	}
 	@media (min-width: 1440px) {
 		width: 350px;
+	}
+	@media (min-width: 1920px) {
+		height: 255px;
+		width: 405px;
+
+		h3 {
+			font-size: 26px;
+		}
+
+		p{
+			font-size: 20px;
+		}
+		p:nth-of-type(3) {
+			font-size: 18px;
+		}
 	}
 `
 

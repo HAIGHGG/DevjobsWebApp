@@ -5,7 +5,6 @@ import styled from 'styled-components'
 function JobOffer() {
 	let params = useParams()
 	const details = data[params.id - 1]
-	
 
 	return (
 		<div>
@@ -86,6 +85,7 @@ const ApplyNowDiv = styled.div`
 	border-radius: 6px;
 	background-color: var(--element);
 	transition: background-color 0.2s;
+	max-width: 748px;
 
 	button {
 		width: 100%;
@@ -96,6 +96,13 @@ const ApplyNowDiv = styled.div`
 		background-color: var(--second-color);
 		color: #ffffff;
 	}
+	@media (min-width: 768px) {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	@media (min-width: 1920px) {
+		max-width: 1350px;
+	}
 `
 
 const Wrapper = styled.div`
@@ -105,6 +112,16 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin: 0 25px 0 25px;
+
+	h3 {
+		font-size: 20px;
+	}
+	h4 {
+		font-size: 20px;
+	}
+	p {
+		font-size: 16px;
+	}
 
 	section {
 		display: flex;
@@ -139,6 +156,7 @@ const Wrapper = styled.div`
 			color: var(--second-color);
 			background-color: var(--third-color);
 			transition: background-color 0.2s;
+
 		}
 		@media (min-width: 768px) {
 			display: flex;
@@ -170,16 +188,11 @@ const Wrapper = styled.div`
 		margin-top: 115px;
 
 		h3 {
-			font-size: 20px;
 			margin-bottom: 2px;
 			color: var(--text-header);
 		}
 		h4 {
 			margin: 45px 0 35px 0;
-			font-size: 20px;
-		}
-		p {
-			font-size: 16px;
 		}
 		span {
 			font-weight: bold;
@@ -224,6 +237,23 @@ const Wrapper = styled.div`
 			::marker {
 				font-weight: bold;
 				color: var(--second-color);
+			}
+		}
+	}
+
+	@media (min-width: 1920px) {
+		section {
+			max-width: 1350px;
+
+			h3 {
+				font-size: 26px;
+			}
+
+			p {
+				font-size: 20px;
+			}
+			li{
+				font-size: 20px;
 			}
 		}
 	}

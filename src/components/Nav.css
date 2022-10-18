@@ -194,3 +194,10 @@ a {
 		left: 755px;
 	}
 }
+@media (min-width: 1920px) {
+	h1{
+		font-size: 52px;
+	}
+}
+	
+

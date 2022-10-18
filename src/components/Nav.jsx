@@ -1,6 +1,6 @@
 import './Nav.css'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Toggle from './Toggle'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
@@ -62,7 +62,9 @@ function Nav() {
 	return (
 		<nav>
 			<div className='wrapper'>
-				<h1>devjobs</h1>
+				<Link to={'/'}>
+					<h1>devjobs</h1>
+				</Link>
 
 				<div className='wrapper-for-toggle'>
 					<BsFillSunFill />
